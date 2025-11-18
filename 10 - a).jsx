@@ -1,37 +1,67 @@
 import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
 
 
 function Calculadora() {
-  const [n1, setN1] = useState(0);
-  const [n2, setN2] = useState(0);
-
-
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState('');
+  const [resultado, setResultado] = useState('');
   const calcular = (operacao) => {
-    let res
-    switch (operacao) {
-      case 'soma': res = Number(n1) + Number(n2); break;
-      case 'sub': res = Number(n1) - Number(n2); break;
-      case 'mult': res = Number(n1) * Number(n2); break;
-      case 'div': res = Number(n1) / Number(n2); break;
+    const num1 = parseFloat(num1);
+    const num2 = parseFloat(num2);
+
+
+    if (isNaN(num1) || isNaN(num2)) {
+      setResultado('insira um numero valido');
+      return;
     }
-    document.getElementById(“resul”).innerText = ‘Resultado: ${ res }’
-  }
+
+
+    let res;
+    switch (operacao) {
+      case 'soma':
+        res = num1 + num2;
+        break;
+      case 'subtracao':
+        res = num1 - num2;
+        break;
+
+
+      case 'multiplicacao':
+        res = num1 * num2;
+        break;
+      case 'divisao':
+        res = n2 !== 0 ? num1 / num2 : 'erro:divisao por zero';
+        break;
+      default:
+        res = '';
+    }
+    setResultado(res);
+  };
   return (
     <div>
-      <h2>Calculadora</h2>
-      <input type="number" value={n1} onChange={(e) => setN1(e.target.value)}/>
-      <input type="number" value={n2} onChange={(e) => setN2(e.target.value)}/>
-      <button onClick={() => calcular(“soma”)}>Soma</button>
-      <button onClick={() => calcular(“sub”)}>Subtração</button>
-      <button onClick={() => calcular(“mult”)}>Multiplicação</button>
-      <button onClick={() => calcular(“div”)}>Divisão</button>
-      <h2 id=’resul’>Resultado: </h2>
-    </div >
-  );
-};
+      <h2>calculadora</h2>
+      <input
+        type='number'
+        value={num1}
+        onChange={(e) => setNum1(e.target.value)}
+        placeholder='primeiro numero' />
 
 
+      <input
+        type='number'
+        value={num2}
+        onChange={(e) => setNum2(e.target.value)}
+        placeholder='segundo numero' />
+      <div>
+        <button onClick={() => calcular('soma')}>+</button>
+      </div>
+    </div>
+  )
 
 
-export default Calculadora
+}
+
+export default Calculadora;
