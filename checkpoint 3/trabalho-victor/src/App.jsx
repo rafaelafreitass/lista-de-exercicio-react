@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 function App() {
-  // Dados iniciais
   const initialSongs = [
     { id: 1, title: "Bohemian Rhapsody", artist: "Queen", duration: "5:55", favorite: true },
     { id: 2, title: "Blinding Lights", artist: "The Weeknd", duration: "3:22", favorite: false },
@@ -14,7 +13,6 @@ function App() {
     { id: 8, title: "Smells Like Teen Spirit", artist: "Nirvana", duration: "5:01", favorite: true },
   ];
 
-  // Estados SIMPLIFICADOS
   const [songs] = useState(initialSongs);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -29,12 +27,11 @@ function App() {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
   const [showPlaylistForm, setShowPlaylistForm] = useState(false);
   const [favorites, setFavorites] = useState([1, 3, 6, 8]);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(null); // playlist id ou null
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(null);
 
   const progressIntervalRef = useRef(null);
   const currentSong = songs[currentSongIndex];
 
-  // Filtra músicas SIMPLES
   const filteredSongs = searchTerm 
     ? songs.filter(song =>
         song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -42,7 +39,6 @@ function App() {
       )
     : songs;
 
-  // Funções DIRETAS
   const handlePlaySong = (index) => {
     if (currentSongIndex === index) {
       setIsPlaying(!isPlaying);
@@ -114,8 +110,7 @@ function App() {
   const handleDeletePlaylist = (playlistId) => {
     setPlaylists(prev => prev.filter(playlist => playlist.id !== playlistId));
     setShowDeleteConfirm(null);
-    
-    // Se a playlist sendo visualizada for excluída, fecha a visualização
+  
     if (selectedPlaylistId === playlistId) {
       setSelectedPlaylistId(null);
     }
@@ -131,7 +126,6 @@ function App() {
     setShowDeleteConfirm(null);
   };
 
-  // Progresso SIMPLIFICADO
   useEffect(() => {
     if (isPlaying) {
       progressIntervalRef.current = setInterval(() => {
@@ -154,7 +148,7 @@ function App() {
 
   return (
     <div className="spotify-clone">
-      {/* Header */}
+      {}
       <header className="header">
         <div className="logo">
           <span className="logo-text">SomLivre</span>
@@ -178,7 +172,7 @@ function App() {
         </div>
       </header>
       
-      {/* Formulário de Playlist */}
+      {}
       {showPlaylistForm && (
         <div className="playlist-form">
           <input
@@ -197,7 +191,7 @@ function App() {
         </div>
       )}
       
-      {/* Confirmação de exclusão */}
+      {}
       {showDeleteConfirm && (() => {
         const playlistToDelete = playlists.find(p => p.id === showDeleteConfirm);
         if (!playlistToDelete) return null;
@@ -225,9 +219,9 @@ function App() {
         );
       })()}
       
-      {/* Conteúdo Principal */}
+      {}
       <div className="main-content">
-        {/* Painel Esquerdo - Playlists */}
+        {}
         <div className="left-panel">
           <h2>Suas Playlists</h2>
           <div className="playlists-grid">
@@ -265,7 +259,7 @@ function App() {
             ))}
           </div>
           
-          {/* Visualização de Playlist Específica */}
+          {}
           {selectedPlaylistId && (() => {
             const playlist = playlists.find(p => p.id === selectedPlaylistId);
             if (!playlist) return null;
@@ -308,7 +302,7 @@ function App() {
           })()}
         </div>
         
-        {/* Painel Direito - Músicas */}
+        {}
         <div className="right-panel">
           {!selectedPlaylistId && (
             <>
@@ -363,7 +357,7 @@ function App() {
         </div>
       </div>
       
-      {/* Player */}
+      {}
       <div className="player">
         <div className="player-info">
           {currentSong ? (
