@@ -1,4 +1,4 @@
-/* ===== RESET E ESTILOS GERAIS ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,14 +13,12 @@ body {
   overflow: hidden;
 }
 
-/* ===== CONTAINER PRINCIPAL ===== */
 .spotify-clone {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== HEADER ===== */
 .header {
   background: #000000;
   padding: 16px 24px;
@@ -79,7 +77,6 @@ body {
   background: #1ed760;
 }
 
-/* ===== FORMULÁRIO DE PLAYLIST ===== */
 .playlist-form {
   background: #282828;
   padding: 16px 24px;
@@ -133,7 +130,6 @@ body {
   background: #555555;
 }
 
-/* ===== MODAL DE CONFIRMAÇÃO DE EXCLUSÃO ===== */
 .delete-confirm {
   position: fixed;
   top: 0;
@@ -201,14 +197,12 @@ body {
   background: #555555;
 }
 
-/* ===== CONTEÚDO PRINCIPAL ===== */
 .main-content {
   display: flex;
   flex: 1;
   overflow: hidden;
 }
 
-/* ===== PAINEL ESQUERDO - PLAYLISTS ===== */
 .left-panel {
   width: 30%;
   min-width: 320px;
@@ -315,7 +309,6 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* ===== VISUALIZAÇÃO DE PLAYLIST ESPECÍFICA ===== */
 .playlist-view {
   margin-top: 32px;
   padding: 24px;
@@ -412,7 +405,6 @@ body {
   font-size: 14px;
 }
 
-/* ===== PAINEL DIREITO - MÚSICAS ===== */
 .right-panel {
   flex: 1;
   padding: 24px;
@@ -535,7 +527,6 @@ body {
   border-color: #1DB954;
 }
 
-/* ===== PLAYER ===== */
 .player {
   background: #000000;
   padding: 16px 24px;
@@ -699,7 +690,6 @@ body {
   text-align: right;
 }
 
-/* ===== SCROLLBAR PERSONALIZADA ===== */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -724,7 +714,6 @@ body {
   width: 8px;
 }
 
-/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 1024px) {
   .main-content {
     flex-direction: column;
@@ -880,20 +869,17 @@ body {
   }
 }
 
-/* ===== REMOVER ANIMAÇÕES PROBLEMÁTICAS ===== */
 * {
   transition: none !important;
   animation: none !important;
 }
 
-/* ===== EVITAR FLICKERING ===== */
 .song-card,
 .playlist-card,
 .playlist-song-item {
   transform: none !important;
 }
 
-/* ===== MELHORIAS DE ACESSIBILIDADE ===== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -904,19 +890,16 @@ body {
   }
 }
 
-/* ===== ESTADOS DE FOCO VISÍVEL ===== */
 :focus-visible {
   outline: 2px solid #1DB954;
   outline-offset: 2px;
 }
 
-/* ===== SELEÇÃO DE TEXTO ===== */
 ::selection {
   background-color: rgba(29, 185, 84, 0.3);
   color: #ffffff;
 }
 
-/* ===== BOTÕES DESABILITADOS ===== */
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
