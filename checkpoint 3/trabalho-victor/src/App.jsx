@@ -4,13 +4,13 @@ import './App.css';
 function App() {
   const initialSongs = [
     { id: 1, title: "Hotel California", artist: "The Eagles", duration: "5:55", favorite: true },
-    { id: 2, title: "Blinding Lights", artist: "", duration: "3:22", favorite: false },
-    { id: 3, title: "Shape of You", artist: "Ed Sheeran", duration: "3:54", favorite: true },
+    { id: 2, title: "Oh! Darling", artist: "The Beatles", duration: "3:22", favorite: false },
+    { id: 3, title: "Victim of Love", artist: "The Eagles", duration: "3:54", favorite: true },
     { id: 4, title: "Remember the time", artist: "Michael Jackson", duration: "4:54", favorite: false },
     { id: 5, title: "People are Strange", artist: "The Doors", duration: "3:14", favorite: false },
-    { id: 6, title: "Stayin' Alive", artist: "Bee Gees", duration: "4:45", favorite: true },
-    { id: 7, title: "Uptown Funk", artist: "Mark Ronson ft. Bruno Mars", duration: "4:30", favorite: false },
-    { id: 8, title: "Smells Like Teen Spirit", artist: "Nirvana", duration: "5:01", favorite: true },
+    { id: 6, title: "Forget Her", artist: "Jeff Buckley", duration: "4:45", favorite: true },
+    { id: 7, title: "Iron Man", artist: "Black Sabbath", duration: "4:30", favorite: false },
+    { id: 8, title: "Rape Me", artist: "Nirvana", duration: "5:01", favorite: true },
   ];
 
   const [songs] = useState(initialSongs);
