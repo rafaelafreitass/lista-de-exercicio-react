@@ -3,11 +3,11 @@ import './App.css';
 
 function App() {
   const initialSongs = [
-    { id: 1, title: "Bohemian Rhapsody", artist: "Queen", duration: "5:55", favorite: true },
-    { id: 2, title: "Blinding Lights", artist: "The Weeknd", duration: "3:22", favorite: false },
+    { id: 1, title: "Hotel California", artist: "The Eagles", duration: "5:55", favorite: true },
+    { id: 2, title: "Blinding Lights", artist: "", duration: "3:22", favorite: false },
     { id: 3, title: "Shape of You", artist: "Ed Sheeran", duration: "3:54", favorite: true },
-    { id: 4, title: "Billie Jean", artist: "Michael Jackson", duration: "4:54", favorite: false },
-    { id: 5, title: "Bad Guy", artist: "Billie Eilish", duration: "3:14", favorite: false },
+    { id: 4, title: "Remember the time", artist: "Michael Jackson", duration: "4:54", favorite: false },
+    { id: 5, title: "People are Strange", artist: "The Doors", duration: "3:14", favorite: false },
     { id: 6, title: "Stayin' Alive", artist: "Bee Gees", duration: "4:45", favorite: true },
     { id: 7, title: "Uptown Funk", artist: "Mark Ronson ft. Bruno Mars", duration: "4:30", favorite: false },
     { id: 8, title: "Smells Like Teen Spirit", artist: "Nirvana", duration: "5:01", favorite: true },
@@ -32,11 +32,11 @@ function App() {
   const progressIntervalRef = useRef(null);
   const currentSong = songs[currentSongIndex];
 
-  const filteredSongs = searchTerm 
+  const filteredSongs = searchTerm
     ? songs.filter(song =>
-        song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        song.artist.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+      song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      song.artist.toLowerCase().includes(searchTerm.toLowerCase())
+    )
     : songs;
 
   const handlePlaySong = (index) => {
@@ -66,8 +66,8 @@ function App() {
   };
 
   const handleToggleFavorite = (songId) => {
-    setFavorites(prev => 
-      prev.includes(songId) 
+    setFavorites(prev =>
+      prev.includes(songId)
         ? prev.filter(id => id !== songId)
         : [...prev, songId]
     );
@@ -75,13 +75,13 @@ function App() {
 
   const handleCreatePlaylist = () => {
     if (!newPlaylistName.trim()) return;
-    
+
     const newPlaylist = {
       id: Date.now(),
       name: newPlaylistName,
       songs: []
     };
-    
+
     setPlaylists(prev => [...prev, newPlaylist]);
     setNewPlaylistName("");
     setShowPlaylistForm(false);
@@ -89,7 +89,7 @@ function App() {
 
   const handleAddToPlaylist = (songId, playlistId) => {
     if (!playlistId) return;
-    
+
     setPlaylists(prev => prev.map(playlist => {
       if (playlist.id === playlistId && !playlist.songs.includes(songId)) {
         return { ...playlist, songs: [...playlist.songs, songId] };
@@ -110,7 +110,7 @@ function App() {
   const handleDeletePlaylist = (playlistId) => {
     setPlaylists(prev => prev.filter(playlist => playlist.id !== playlistId));
     setShowDeleteConfirm(null);
-  
+
     if (selectedPlaylistId === playlistId) {
       setSelectedPlaylistId(null);
     }
@@ -138,7 +138,7 @@ function App() {
         });
       }, 100);
     }
-    
+
     return () => {
       if (progressIntervalRef.current) {
         clearInterval(progressIntervalRef.current);
@@ -148,7 +148,7 @@ function App() {
 
   return (
     <div className="spotify-clone">
-      {}
+      { }
       <header className="header">
         <div className="logo">
           <span className="logo-text">SomLivre</span>
@@ -163,16 +163,16 @@ function App() {
           />
         </div>
         <div className="user-menu">
-          <button 
-            className="new-playlist-btn" 
+          <button
+            className="new-playlist-btn"
             onClick={() => setShowPlaylistForm(!showPlaylistForm)}
           >
             + Nova Playlist
           </button>
         </div>
       </header>
-      
-      {}
+
+      { }
       {showPlaylistForm && (
         <div className="playlist-form">
           <input
@@ -190,24 +190,24 @@ function App() {
           </button>
         </div>
       )}
-      
-      {}
+
+      { }
       {showDeleteConfirm && (() => {
         const playlistToDelete = playlists.find(p => p.id === showDeleteConfirm);
         if (!playlistToDelete) return null;
-        
+
         return (
           <div className="delete-confirm">
             <div className="delete-confirm-content">
               <p>Tem certeza que deseja excluir a playlist "{playlistToDelete.name}"?</p>
               <div className="delete-confirm-buttons">
-                <button 
+                <button
                   className="delete-confirm-btn delete-btn"
                   onClick={() => handleDeletePlaylist(playlistToDelete.id)}
                 >
                   Excluir
                 </button>
-                <button 
+                <button
                   className="delete-confirm-btn cancel-delete-btn"
                   onClick={() => setShowDeleteConfirm(null)}
                 >
@@ -218,14 +218,14 @@ function App() {
           </div>
         );
       })()}
-      
-      {}
+
+      { }
       <div className="main-content">
-        {}
+        { }
         <div className="left-panel">
           <h2>Suas Playlists</h2>
           <div className="playlists-grid">
-            {playlists.filter(p => 
+            {playlists.filter(p =>
               p.name.toLowerCase().includes(searchTerm.toLowerCase())
             ).map(playlist => (
               <div key={playlist.id} className="playlist-card">
@@ -234,20 +234,20 @@ function App() {
                   <p>{playlist.songs.length} músicas</p>
                 </div>
                 <div className="playlist-actions">
-                  <button 
+                  <button
                     className="view-playlist-btn"
                     onClick={() => handleViewPlaylist(playlist.id)}
                   >
                     Ver
                   </button>
-                  <button 
+                  <button
                     className="delete-playlist-btn"
                     onClick={() => setShowDeleteConfirm(playlist.id)}
                   >
                     🗑
                   </button>
                   {selectedPlaylistId === playlist.id && (
-                    <button 
+                    <button
                       className="close-playlist-btn"
                       onClick={handleClosePlaylistView}
                     >
@@ -258,20 +258,20 @@ function App() {
               </div>
             ))}
           </div>
-          
-          {}
+
+          { }
           {selectedPlaylistId && (() => {
             const playlist = playlists.find(p => p.id === selectedPlaylistId);
             if (!playlist) return null;
-            
+
             const playlistSongs = songs.filter(song => playlist.songs.includes(song.id));
-            
+
             return (
               <div className="playlist-view">
                 <div className="playlist-view-header">
                   <h2>{playlist.name}</h2>
                   <p>{playlistSongs.length} músicas na playlist</p>
-                  <button 
+                  <button
                     className="delete-current-playlist-btn"
                     onClick={() => setShowDeleteConfirm(playlist.id)}
                   >
@@ -285,7 +285,7 @@ function App() {
                         <h4>{song.title}</h4>
                         <p>{song.artist} • {song.duration}</p>
                       </div>
-                      <button 
+                      <button
                         className="remove-btn"
                         onClick={() => handleRemoveFromPlaylist(song.id, playlist.id)}
                       >
@@ -301,16 +301,16 @@ function App() {
             );
           })()}
         </div>
-        
-        {}
+
+        { }
         <div className="right-panel">
           {!selectedPlaylistId && (
             <>
               <h2>{searchTerm ? "Resultados da Busca" : "Todas as Músicas"}</h2>
               <div className="songs-container">
                 {filteredSongs.map((song, index) => (
-                  <div 
-                    key={song.id} 
+                  <div
+                    key={song.id}
                     className={`song-card ${currentSongIndex === index ? 'active' : ''}`}
                   >
                     <div className="song-info">
@@ -318,19 +318,19 @@ function App() {
                       <p>{song.artist} • {song.duration}</p>
                     </div>
                     <div className="song-controls">
-                      <button 
+                      <button
                         className={`favorite-btn ${favorites.includes(song.id) ? 'active' : ''}`}
                         onClick={() => handleToggleFavorite(song.id)}
                       >
                         {favorites.includes(song.id) ? '★' : '☆'}
                       </button>
-                      <button 
+                      <button
                         className="play-btn"
                         onClick={() => handlePlaySong(index)}
                       >
                         {currentSongIndex === index && isPlaying ? '⏸' : '▶'}
                       </button>
-                      <select 
+                      <select
                         defaultValue=""
                         onChange={(e) => {
                           const playlistId = parseInt(e.target.value);
@@ -356,8 +356,8 @@ function App() {
           )}
         </div>
       </div>
-      
-      {}
+
+      { }
       <div className="player">
         <div className="player-info">
           {currentSong ? (
@@ -372,7 +372,7 @@ function App() {
             </>
           )}
         </div>
-        
+
         <div className="player-controls">
           <button className="control-btn" onClick={handlePrevSong}>⏮</button>
           <button className="play-pause-btn" onClick={handleTogglePlay}>
@@ -380,10 +380,10 @@ function App() {
           </button>
           <button className="control-btn" onClick={handleNextSong}>⏭</button>
         </div>
-        
+
         <div className="player-progress">
-          <div 
-            className="progress-bar" 
+          <div
+            className="progress-bar"
             onClick={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const clickPosition = e.clientX - rect.left;
@@ -392,8 +392,8 @@ function App() {
               setProgress(Math.min(100, Math.max(0, newProgress)));
             }}
           >
-            <div 
-              className="progress-fill" 
+            <div
+              className="progress-fill"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -401,7 +401,7 @@ function App() {
             {Math.floor((progress / 100) * 300)}s / {currentSong?.duration || '0:00'}
           </span>
         </div>
-        
+
         <div className="player-volume">
           <span>🔊</span>
           <input
